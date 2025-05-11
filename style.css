@@ -1,0 +1,312 @@
+/* ======================================
+   Full Page + Font Setup
+====================================== */
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    background-color: #00244E;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    overflow: hidden;
+}
+
+/* ======================================
+   App Container
+====================================== */
+#app-container {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    overflow: hidden;
+}
+
+/* ======================================
+   Sidebar - Rooms and Online Users
+====================================== */
+#sidebar {
+    width: 250px;
+    background-color: #00244E;
+    padding: 1rem;
+    box-sizing: border-box;
+    border-right: 1px dotted #FF7900;
+    display: flex;
+    flex-direction: column;
+}
+
+.user-online,
+#room-list .room {
+    color: #FF7900;
+}
+
+.section h2 {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: white;
+}
+
+#room-list .room {
+    padding: 8px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    color: #FF7900;
+    transition: background-color 0.2s;
+}
+
+#room-list .room:hover {
+    background-color: lightblue;
+}
+
+#room-list .room.selected {
+    background-color: #d6e4ff;
+    font-weight: 600;
+}
+
+#user-list {
+    margin-top: 1rem;
+    font-size: 0.95rem;
+    color: white;
+}
+
+.user-online {
+    padding: 6px 10px;
+    border-radius: 4px;
+    color: #1a8917;
+}
+
+/* ======================================
+   Chat Screen Layout
+====================================== */
+#chat-screen {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    min-height: 0;
+}
+
+/* Header */
+#header {
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #FF7900;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: white;
+}
+
+#header h1 {
+    color: #FF7900;
+}
+
+#logout-button {
+    background-color: #ff0000;
+    color: white;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    border: 1px solid #ccc;
+}
+
+#logout-button:hover {
+    background-color: #820000;
+}
+
+/* Typing Status */
+#typing-status {
+    min-height: 1.2rem;
+    padding: 0 1.5rem;
+    font-size: 0.85rem;
+    font-style: italic;
+    color: #777;
+}
+
+/* ======================================
+   Chat Body (History + Input)
+====================================== */
+#chat-body {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    height: 85vh;
+    min-height: 50px;
+    max-height: 89vh;
+}
+
+/* Chat History */
+#chat-history {
+    flex: 1;
+    overflow-y: auto;
+    padding: 1rem 1.5rem;
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+#chat-history::after {
+    content: '';
+    flex-shrink: 0;
+    min-height: 1px;
+}
+
+/* Message Bubbles */
+.bubble {
+    max-width: 70%;
+    padding: 12px;
+    border-radius: 16px;
+    line-height: 1.4;
+    font-size: 0.95rem;
+    word-wrap: break-word;
+}
+
+.bubble.other {
+    background-color: #f0f0f0;
+    align-self: flex-start;
+    border-top-left-radius: 4px;
+}
+
+.bubble.you {
+    background-color: #007bff;
+    color: white;
+    align-self: flex-end;
+    border-top-right-radius: 4px;
+}
+
+.bubble .meta {
+    display: block;
+    font-size: 0.75rem;
+    color: black;
+    margin-bottom: 6px;
+}
+
+/* ======================================
+   Chat Input (Pinned)
+====================================== */
+#chat-input {
+    padding: 1rem 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: #001C3A;
+    border-top: 1px solid #ccc;
+    flex-shrink: 0;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+}
+
+#message-input {
+    flex: 1;
+    padding: 10px;
+    font-size: 1rem;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    outline: none;
+}
+
+#chat-input button {
+    padding: 6px 12px;
+    font-size: 1.2rem;
+    border: none;
+    border-radius: 6px;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    flex-shrink: 0;
+}
+
+#chat-input button:hover {
+    background-color: #0056b3;
+}
+
+#file-button,
+#emoji-button {
+    background-color: transparent;
+    font-size: 1.2rem;
+    color: #007bff;
+    padding: 6px 12px;
+}
+
+/* ======================================
+   Emoji Menu
+====================================== */
+#emoji-menu {
+    position: absolute;
+    bottom: 60px;
+    left: 20px;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    padding: 8px;
+    max-height: 150px;
+    overflow-y: auto;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+}
+
+#emoji-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 4px;
+}
+
+.emoji {
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.emoji:hover {
+    transform: scale(1.2);
+}
+
+#close-emoji-menu-button {
+    position: absolute;
+    top: 4px;
+    right: 6px;
+    border: none;
+    background: transparent;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+/* ======================================
+   Login Page
+====================================== */
+#login-page {
+    text-align: center;
+    padding-top: 10vh;
+    color: white;
+}
+
+#login-page h1 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+}
+
+#login-page input {
+    width: 180px;
+    margin: 0 6px;
+    padding: 10px;
+    font-size: 1rem;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+}
+
+#login-button {
+    padding: 10px 16px;
+    font-size: 1rem;
+    margin-left: 6px;
+    background-color: #007bff;
+    border: none;
+    border-radius: 6px;
+    color: white;
+}
+
+#login-button:hover {
+    background-color: #0056b3;
+}
