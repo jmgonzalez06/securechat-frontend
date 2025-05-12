@@ -243,6 +243,9 @@ logoutButton.addEventListener('click', () => {
     chatScreen.style.display = 'none';
     document.getElementById('app-container').style.display = 'none';
     loginPage.style.display = 'block';
+    loginPage.style.display = 'flex';
+    loginPage.style.marginLeft = 'auto';
+    loginPage.style.marginRight = 'auto';
 });
 
 // =============================
