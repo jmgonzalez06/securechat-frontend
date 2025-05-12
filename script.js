@@ -43,7 +43,7 @@ loginButton.addEventListener('click', async () => {
         alert('Please enter both username and password.');
         return;
     }
-
+    console.log("Sending credentials:", username, password);
     try {
         const apiBase = window.location.hostname !== 'localhost'
             ? 'https://securechat-backend-a8yh.onrender.com'
