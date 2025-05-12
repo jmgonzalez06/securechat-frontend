@@ -108,13 +108,13 @@ function initializeWebSocket() {
             if (ws.readyState === WebSocket.OPEN && mainRoom) {
                 console.log('Joining Main Room...');
                 mainRoom.click();
+                ws.send(JSON.stringify({
+                    type: "status",
+                    user: currentUser,
+                    status: "online"
+                }));
                 clearInterval(tryRoomJoin);
             }
-            ws.send(JSON.stringify({
-                type: "status",
-                user: currentUser,
-                status: "online"
-            }));
         }, 100);
 
         // Start sending heartbeats
