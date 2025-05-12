@@ -69,7 +69,7 @@ loginButton.addEventListener('click', async () => {
             onlineUsers.add(currentUser);
             updateUserList();
             populateRoomList();
-            document.querySelector('[data-room="main"]').click();
+            //document.querySelector('[data-room="main"]').click();
         } else {
             alert(result.message || 'Invalid username or password.');
         }
@@ -103,7 +103,7 @@ function initializeWebSocket() {
         // Wait until WebSocket is truly open and DOM is ready
         const tryRoomJoin = setInterval(() => {
             const mainRoom = document.querySelector('[data-room="main"]');
-            console.log('Waiting for mainRoom and WebSocket OPEN...', ws.readyState, mainRoom);
+            //console.log('Waiting for mainRoom and WebSocket OPEN...', ws.readyState, mainRoom);
 
             if (ws.readyState === WebSocket.OPEN && mainRoom) {
                 console.log('Joining Main Room...');
