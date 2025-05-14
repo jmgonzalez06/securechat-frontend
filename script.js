@@ -137,7 +137,8 @@ function initializeWebSocket() {
             }
 
             if (data.type === "message" && !data.rendered) {
-                if (data.user === currentUser) return; // skip duplicate self-message
+                // Skip self-message only if it's a live echo
+                if (data.user === currentUser && typeof data.rendered !== "undefined") return;
 
                 if (data.room !== currentRoom) return;
 
