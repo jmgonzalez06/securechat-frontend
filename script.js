@@ -139,7 +139,7 @@ function initializeWebSocket() {
             if (data.type === "message") {
                 // Skip self-message only if it's a live echo
                 const isSelf = data.user === currentUser;
-                const isEcho = typeof data.rendered === "undefined"; // sent from server, not sendMessage
+                const isEcho = data.rendered === undefined && !data.fromHistory; // More specific check to prevent double render and also no render from history
                 if (isSelf && isEcho) return;
 
                 if (!data.rendered && data.room === currentRoom){
