@@ -136,11 +136,8 @@ function initializeWebSocket() {
                 return;
             }
 
-            if (data.type === "message") {
-                if (data.user === currentUser) return; // skip duplicate self-message
-            }
-                
             if (data.type === "message" && !data.rendered) {
+                if (data.user === currentUser) return; // skip duplicate self-message
 
                 if (data.room !== currentRoom) return;
 
