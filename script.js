@@ -136,21 +136,24 @@ function initializeWebSocket() {
                 return;
             }
 
-            if (data.type === "message" && !data.rendered) {
+            if (data.type === "message") {
                 // Skip self-message only if it's a live echo
-                if (data.user === currentUser && typeof data.rendered !== "undefined") return;
+                const isSelf = data.user === currentUser;
+                const isEcho = typeof data.rendered === "undefined"; // sent from server, not sendMessage
+                if (isSelf && isEcho) return;
 
-                if (data.room !== currentRoom) return;
+                if (!data.rendered && data.room === currentRoom){
 
-                const timestamp = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-                const isLink = data.message.includes("Shared a file:");
-                const raw = isLink ? data.message : parseMarkdown(data.message);
+                    const timestamp = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+                    const isLink = data.message.includes("Shared a file:");
+                    const raw = isLink ? data.message : parseMarkdown(data.message);
 
-                const message = data.user === currentUser
-                    ? `<div class="bubble you"><span class="meta">You • ${timestamp}</span><div>${raw}</div></div>`
-                    : `<div class="bubble other"><span class="meta">${data.user} • ${timestamp}</span><div>${raw}</div></div>`;
-                data.rendered = true;
-                addMessageToChat(message);
+                    const message = data.user === currentUser
+                        ? `<div class="bubble you"><span class="meta">You • ${timestamp}</span><div>${raw}</div></div>`
+                        : `<div class="bubble other"><span class="meta">${data.user} • ${timestamp}</span><div>${raw}</div></div>`;
+                    data.rendered = true;
+                    addMessageToChat(message);
+                }
             }
     
             if (data.type === "typing") {
