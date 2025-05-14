@@ -92,7 +92,7 @@ function initializeWebSocket() {
     const isProd = window.location.hostname !== 'localhost';
     const wsProtocol = isProd ? 'wss' : 'ws';
     const wsHost = isProd ? 'securechat-backend-a8yh.onrender.com' : `${window.location.hostname}:8080`;
-    const wsUrl = `${wsProtocol}://${wsHost}?user=${encodeURIComponent(currentUser)}`;
+    const wsUrl = `${wsProtocol}://${wsHost}/ws?user=${encodeURIComponent(currentUser)}`;
 
     console.log("Connecting to WebSocket:", wsUrl);
     ws = new WebSocket(wsUrl);
